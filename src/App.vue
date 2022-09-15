@@ -30,13 +30,18 @@ const algorithm = ref('');
     <div class="">
       <Overview :msg="algorithm"/>
       <nav 
-        class="w-full text-base center mt-[2rem] items-center grid-cols"
-        v-for="route in navItems" :key="route.title"
+        class="
+          flex-row flex
+          text-base center 
+          mt-[2rem] 
+          grid-cols"
       >
+      <div v-for="route in navItems" :key="route.title">
         <RouterLink 
           @click="algorithm = route.headline" 
           :to="route.path" >{{ route.title}}
         </RouterLink>
+      </div>
       </nav>
     </div>
   </header>
@@ -49,7 +54,6 @@ header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
 
 nav a.router-link-exact-active {
   color: var(--color-text);
