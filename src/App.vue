@@ -32,9 +32,10 @@ const algorithm = ref('');
       <nav 
         class="
           flex-row flex
-          text-base center 
-          mt-[2rem] 
-          grid-cols"
+          text-base justify-center 
+          lg:mt-20 
+          grid-cols
+        "
       >
       <div v-for="route in navItems" :key="route.title">
         <RouterLink 

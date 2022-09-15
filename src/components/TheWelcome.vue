@@ -12,11 +12,9 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #icon>
       <DocumentationIcon />
     </template>
-    <template #heading>Documentation</template>
-
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
+    <template #heading>Algorithms</template>
+      An algorithm is a procedure widely used in mathematics and computer sciene to solve complex problems. 
+      Algorithms follow a set of defined instructions in order to reach an optimal solution.
   </WelcomeItem>
 
   <WelcomeItem>
