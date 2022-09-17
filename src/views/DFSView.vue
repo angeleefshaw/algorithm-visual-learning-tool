@@ -1,20 +1,20 @@
 <script setup>
   import { onMounted, ref } from 'vue';
   import Node from '../modules/DFS/composables/CreateNode.js'
+  import TreeNode from '../components/TreeNode.vue'
 
   let inputVal = ''
   let selectedNode = ''
   let Node1 = ref({})
 
 
-    Node1 = new Node("A")
-    Node1.addChild("B")
-    const Node2 = Node1.children[0]
-    Node2.addChild("C")
-    Node2.addChild("D")
-    const Node3 = Node1.children[2]
-
-    console.log(typeof(Node1))
+  Node1 = new Node("A")
+  Node1.addChild("B")
+  const Node2 = Node1.children[0]
+  Node2.addChild("C")
+  Node2.addChild("D")
+  const Node3 = Node1.children[2]
+  console.log(Node1)
 
 
   function addNode(nv) {
@@ -40,15 +40,9 @@
       >Add</button>
     </div>
 
+    <span>{{  Node1.name }}</span>
+    <TreeNode v-for="node in Node1.children" :key="node.name" :node="node.children" :name="node.name"></TreeNode>
 
-    <span>{{Node1.name}}</span>
-    <template v-for="value in Node1.children" :key="value.name">
-      <span class="font-bold text-xl">{{value.name}}</span>
-      <ol v-for="children in value.children" :key="children.name">
-        {{children.name}}
-      </ol>
-    </template>
-    
   </div>
 </template>
 
