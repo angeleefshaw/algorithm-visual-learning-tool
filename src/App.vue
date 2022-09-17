@@ -60,7 +60,7 @@ nav a.router-link-exact-active {
   color: var(--color-text);
 }
 
-nav a.router-link-exact-active:hover {
+div a.router-link-exact-active:hover {
   background-color: transparent;
 }
 
