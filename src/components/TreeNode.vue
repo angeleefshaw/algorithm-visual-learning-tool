@@ -7,22 +7,21 @@ export default defineComponent({
     node: Array,
     name: String
   },
-  setup (props) {
-    console.log(JSON.parse(JSON.stringify(props)))
-  }
+  // setup (props) {
+  //   console.log(JSON.parse(JSON.stringify(props)))
+  // }
 })
 
 </script>
 <template>
-    <div class="text-xxl">
+    <li class="text-xxl cursor-pointer py-4 font-bold text-2xl">
         {{ name }}
-    </div>
-
-    <span>{{ node.children }}</span>
+    </li>
+    <li class="cursor-pointer font-bold text-2xl">{{ node.children }}</li>
 
     <div class="replies" v-if="node.length > 0">
         <div  v-for="child in node" :key="child.name" >
-        <TreeNode :node="child.children" :name="child.name"></TreeNode>
+            <TreeNode :node="child.children" :name="child.name"></TreeNode>
         </div>
     </div>
 </template>

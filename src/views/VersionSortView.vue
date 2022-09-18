@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="about justify-center flex-col col-span-2">
       <h1>This is going to be a version sort algorithm!</h1>
     </div>
   </template>

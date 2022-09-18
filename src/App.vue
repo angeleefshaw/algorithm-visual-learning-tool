@@ -24,20 +24,17 @@ const navItems = [{
 const algorithm = ref('');
 
 </script>
-
 <template>
-  <header>
-    <div class="">
+  <header class="p-20 grid h-screen place-items-center">
+    <div>
       <Overview :msg="algorithm"/>
       <nav 
         class="
-          flex-row flex
-          text-base justify-center 
-          lg:mt-20 
-          grid-cols
-        "
+          text-sm text-left
+          lg:mt-10 grid-flow-col grid
+          auto-cols-max divide-x sm:mx-[-18px]"
       >
-      <div v-for="route in navItems" :key="route.title">
+      <div v-for="route in navItems" :key="route.title" class="p-[0.5px]">
         <RouterLink 
           @click="algorithm = route.headline" 
           :to="route.path" >{{ route.title}}
@@ -53,47 +50,14 @@ const algorithm = ref('');
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
-}
 
+}
 nav a.router-link-exact-active {
   color: var(--color-text);
 }
-
-div a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
