@@ -1,10 +1,10 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import About from '../components/About.vue'
 </script>
 
 <template>
   <main class="about justify-center flex-col col-span-2 p-10 ml-10">
-    <TheWelcome />
+    <About></About>
   </main>
 </template>
 
