@@ -2,22 +2,26 @@
   import { onMounted, ref } from 'vue';
   import Node from '../modules/DFS/composables/CreateNode.js'
   import TreeNode from '../components/TreeNode.vue'
+import { root } from 'postcss';
 
   //DATA
   let inputVal = ref('');
   let selectedNode = ref('') ;
   let vertexActive = ref(false);
-  let Node1 = ref({})
+  let rootNode = ref({})
   let selectError = ref(false);
 
+  const tree = []
 
   //ON CREATE
-  Node1 = new Node("A")
-  Node1.addChild("B")
-  const Node2 = Node1.children[0]
+  rootNode = new Node("A")
+  rootNode.addChild("B")
+  const Node2 = rootNode.children[0]
   Node2.addChild("C")
   Node2.addChild("D")
-  const Node3 = Node1.children[2]
+  const Node3 = rootNode.children[2]
+
+  tree.push(rootNode)
 
   //METHODS
   function addNode(nv) {
@@ -61,24 +65,15 @@
       </button>
     </div>
 
-    <ul @click="setVertex($event)">
-
-      <li 
-        :value ="Node1.name"
-        class="cursor-pointer py-4 font-bold text-2xl active:bg-slate-700" 
-        @click="vertexActive = true "
-      >
-        {{ Node1.name }}
-      </li>
-
+    <div @click="setVertex($event)">
       <TreeNode 
-        v-for="node in Node1.children" 
+        v-for="node in tree" 
         :key="node.name" 
         :node="node.children" 
         :name="node.name">
       </TreeNode>
 
-    </ul>
+    </div>
 
   </div>
 </template>
