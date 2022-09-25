@@ -5,37 +5,32 @@
 
   //DATA
   let data = reactive({
-    "inputVal": '',
-    "selectedNode": '',
-    "vertexActive": false,
-    "rootNode": '',
-    "selectError": false,
-    "tree": []
+    "rootNode" : '',
+    "tree": [],
+    'DFSArr': []
   })
 
   //ON CREATE
   data.rootNode = new Node("A")
   data.rootNode.addChild("B")
+  data.rootNode.addChild('T')
+
   const Node2 = data.rootNode.children[0]
   Node2.addChild("C")
   Node2.addChild("D")
-  const Node3 = data.rootNode.children[2]
+
+  const Node3 = Node2.children[1]
+  Node3.addChild("P")
+  Node3.addChild("K")
+ 
+  const Node4 = Node2.children[0]
+  Node4.addChild["J"]
 
   data.tree.push(data.rootNode)
 
-  //METHODS
-  function addNode(nv) {
-    if (this.data.selectedNode.length < 1) {
-      this.data.selectError = ref(true);
-      return;
-    }
-    console.log(this.data.selectedNode)
-    console.log(this.data.inputVal)
-  }
 
-  function setVertex (click) {
-    this.data.vertexActive = ref(true);
-    this.data.selectedNode = ref(click.target.textContent)
+  function dFS () {
+    this.DFSArr = this.data.rootNode.depthFirstSearch([]);
   }
 
 </script>
@@ -43,33 +38,16 @@
 
 <template>
   <div class="about justify-center flex-col col-span-2">
-    <span v-if="data.selectError" class="text-xs text-red-600 my-1">
-        Please select a vertex to create a node
-    </span>
-    <div class="pb-10">
-      <span class="text-base">Add Node</span>
-      <input 
-        v-model="data.inputVal"
-        class="border-2 mx-4 px-3 py-1" 
-        type="text"
-      >
-      <button 
-        type="button" 
-        class="border-2 rounded px-3 py-1 hover:bg-blue-200"
-        @click="addNode()"
-      > Add
-      </button>
-    </div>
+    <button class="border-2 rounded px-3 py-1 hover:bg-blue-200" @click="dFS()">Depth First Search!</button>
 
-    <div @click="setVertex($event)">
-      <TreeNode 
-        v-for="node in data.tree" 
-        :key="node.name" 
-        :node="node.children" 
-        :name="node.name">
-      </TreeNode>
+    <TreeNode 
+      v-for="node in data.tree" 
+      :key="node.name" 
+      :node="node.children" 
+      :name="node.name">
+    </TreeNode>
 
-    </div>
+    <div v-if="DFSArr">{{DFSArr}}</div>
 
   </div>
 </template>
