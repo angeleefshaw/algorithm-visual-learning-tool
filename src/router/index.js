@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import DFSView from '../views/DFSView.vue'
+import DepthFirstSearchView from '../views/DepthFirstSearchView.vue'
 import VersionSort from '../views/VersionSortView.vue'
 import Kadanes from '../views/KadanesView.vue'
 
@@ -14,8 +14,8 @@ const router = createRouter({
     },
     {
       path: '/DepthFirstSearch',
-      name: 'DFS',
-      component: DFSView
+      name: 'DepthFirstSearch',
+      component: DepthFirstSearchView
     },
     {
       path: '/VersionSort',

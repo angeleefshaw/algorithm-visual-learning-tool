@@ -1,7 +1,7 @@
 <script setup>
   import { reactive, ref } from 'vue';
-  import Node from '../modules/DFS/composables/CreateNode.js'
-  import TreeNode from '../components/TreeNode.vue'
+  import Node from '../modules/DepthFirstSearch/composables/CreateNode.js'
+  import TreeNode from '../modules/DepthFirstSearch/components/TreeNode.vue'
 
   //DATA
   let data = reactive({
