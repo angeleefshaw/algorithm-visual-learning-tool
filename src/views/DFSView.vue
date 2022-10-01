@@ -5,9 +5,9 @@
 
   //DATA
   let data = reactive({
-    "rootNode" : '',
-    "tree": [],
-    'DFSArr': []
+    rootNode : '',
+    tree : [],
+    DFSArr: []
   })
 
   //ON CREATE
