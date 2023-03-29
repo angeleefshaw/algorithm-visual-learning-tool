@@ -1,11 +1,17 @@
 <script setup>
   import { reactive } from 'vue'
   import { kadanify } from '../modules/Kadanes/composables/Kadanes'
+  import { useKadanesStore } from '../modules/Kadanes/store/KadanesStore'
+  import { storeToRefs } from 'pinia'
+
+  const kadanesStore = useKadanesStore();
 
   //DATA
   let data = reactive({
     arr : [3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4]
   })
+
+  const { maxSumSoFar } = storeToRefs(kadanesStore)
   
   function findMaxSum(array) {
     const maxSum = kadanify(array)
@@ -46,6 +52,10 @@
       <aside>
         Kadanes Algorithm aims to find the max sum for any subarray of consecutive integers.
       </aside>
+
+      <div v-if="maxSumSoFar">
+        Max sum is {{ maxSumSoFar }}
+      </div>
     </div>
 
   </template>

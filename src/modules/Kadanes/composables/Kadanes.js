@@ -11,14 +11,16 @@ export function kadanify(array) {
 
     for(let i=0; i <= array.length - 1; i++) {
         iteration ++
-        if ((array[i] + maxNum) > array[i] ){
-            maxSum = array[i] + maxNum
+        if ((array[i] + maxSum) > array[i] ){
+            maxSum = array[i] + maxSum
+
             kadanesStore.setMaxSum(maxSum)
-            setSubArray(subArr)
+            setSubArray(maxSum, subArr)
         } else {
             maxSum = array[i]
+
             kadanesStore.setMaxSum(maxSum)
-            resetSubArray(subArr, iteration)
+            resetSubArray(maxSum, subArr, iteration)
         }
         if (maxSum> maxSumSoFar) {
             maxSumSoFar = maxSum
@@ -33,19 +35,20 @@ export function kadanify(array) {
     return maxSumSoFar
 }
 
-function resetSubArray (subArr, iteration) {
+function setSubArray (maxSum, subArr) {
+    subArr.push(maxSum)
+    kadanesStore.setSubArr(subArr)
+}
+
+function resetSubArray (maxSum, subArr, iteration) {
     subArr=[]
     iteration = 0
-    subArr.push(array[i])
+    subArr.push(maxSum)
 
     kadanesStore.setSubArr(subArr)
 }
 
-function setSubArray (subArr) {
-    subArr.push(array[i])
 
-    kadanesStore.setSubArr(subArr)
-}
 
   
 //output 19
