@@ -1,6 +1,8 @@
-function sortVersions(list) {
+export function sortVersions(list) {
     let returnArr = []
     let majors = {}
+
+    console.log(list)
 
     list.forEach(item=> {
 

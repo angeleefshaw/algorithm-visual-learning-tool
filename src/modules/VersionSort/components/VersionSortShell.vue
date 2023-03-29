@@ -3,61 +3,33 @@ import { reactive } from 'vue'
 import EngineerIcon from '../../../assets/icons/EngineerIcon.vue'
 import Alert from '../../../components/Alert.vue'
 import { useVersionSort } from '../store/VersionSortStore';
+import { sortVersions } from '../composables/VersionSort'
 
 const versionSort = useVersionSort()
 
-const data = reactive({
-  versions:[
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    },
-    {
-      id: '1.32.11'
-    }
-  ]
-})
+const versions = versionSort.versions
+
+const data = reactive({})
 
 
-// Set this before getting here at some point?
-// Or allow the user to enter their own via a CSV/text input?
-versionSort.setVersions(data.versions)
+//METHODS
+function shuffle() {
+  //Fisher–Yates shuffle
+  console.log('shuffle')
+}
 
-
-  //METHODS
-  function shuffle() {
-    //Fisher–Yates shuffle
-    console.log('shuffle')
-  }
-
-  function sort() {
-    //custom sort algorithm 
-    console.log('sort')
-  }
+function sort() {
+  let list = versions.map(a => a.id);
+  const sortedList = sortVersions(list);
+  versionSort.setVersions(sortedList)
+}
 
 </script>
 
 <template>
     <div class="about justify-center flex-col col-span-2">
       <Alert 
-        :msg="'Currently at ' + data.versions.length + ' stable releases'"
+        :msg="'Currently at ' + versions.length + ' stable releases'"
         class="w-[35%] mb-20"
       >
       </Alert>
@@ -78,7 +50,7 @@ versionSort.setVersions(data.versions)
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mt-6">
         <div 
-          v-for="version in data.versions" 
+          v-for="version in versions" 
           :key="version.id" 
           class="
             relative flex items-center 
