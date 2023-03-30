@@ -6,19 +6,14 @@ import { useVersionSort } from '../store/VersionSortStore';
 import { sortVersions } from '../composables/VersionSort'
 
 const versionSort = useVersionSort()
-
 const versions = versionSort.versions
 
-const data = reactive({})
-
-
-//METHODS
 function shuffle() {
   versionSort.shuffleVersions()
 }
 
 function sort() {
-  let list = versions.map(a => a.id);
+  const list = versions.map(a => a.id);
   const sortedList = sortVersions(list);
   versionSort.setVersions(sortedList)
 }
