@@ -37,16 +37,14 @@ export const useVersionSort = defineStore('VersionSort', {
     actions: {
         setVersions (array) {
             this.$patch(() => {
-                console.log(this.versions)
                 for(let i in array) {
-                    console.log(i)
                     this.versions[i].id = array[i]
                 }
             })
         },
         shuffleVersions () {
-            this.$patch((state) => {
-                
+            this.$patch(() => {
+                this.versions.sort((a, b) => 0.5 - Math.random());
             })
         }
     },

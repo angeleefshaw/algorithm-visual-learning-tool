@@ -14,8 +14,7 @@ const data = reactive({})
 
 //METHODS
 function shuffle() {
-  //Fisher–Yates shuffle
-  console.log('shuffle')
+  versionSort.shuffleVersions()
 }
 
 function sort() {
