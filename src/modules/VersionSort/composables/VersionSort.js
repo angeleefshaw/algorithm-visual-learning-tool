@@ -1,9 +1,7 @@
 export function sortVersions(list) {
     let returnArr = []
     let majors = {}
-
-    console.log(list)
-
+    
     list.forEach(item=> {
 
         if(item % 1 === 0) {

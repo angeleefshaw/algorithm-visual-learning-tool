@@ -1,13 +1,15 @@
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, defineProps, computed } from 'vue';
 
 export default defineComponent({
   name:'TreeNode',
   props: {
     node: Array,
-    name: String
+    name: String,
+    nodeIndex: Number
   },
 })
+
 
 </script>
 <template>
@@ -20,13 +22,22 @@ export default defineComponent({
         focus:ring-offset-2 hover:bg-gray-50 
         px-2.5 py-1.5 my-3
       "
+      :class="{ 
+        'mr-28' : nodeIndex % 2 == 0 && nodeIndex !== 0,  
+        'ml-28' : nodeIndex % 2 !== 0 && nodeIndex !== 0 
+      }"
   >
     {{ name }}
   </button>
   
     <div class="replies" v-if="node.length > 0">
-        <div  v-for="child in node" :key="child.name" >
-            <TreeNode :node="child.children" :name="child.name"></TreeNode>
+        <div  v-for="(child, index) in node" :key="child.name" >
+            <TreeNode 
+              :node="child.children" 
+              :name="child.name" 
+              :node-index="nodeIndex + 1"
+            >
+            </TreeNode>
         </div>
     </div>
 </template>
